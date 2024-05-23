@@ -113,73 +113,11 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+local mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
-local audio_widget = wibox.widget {
-    {
-        id = "icon",
-        widget = wibox.widget.imagebox,
-        resize = true
-    },
-    {
-        id = "text",
-        widget = wibox.widget.textbox,
-        align = "center"
-    },
-    layout = wibox.layout.fixed.horizontal,
-    set_volume = function(self, volume, muted)
-        local icon
-        if muted then
-            icon = beautiful.widget_audio_muted
-        else
-            if volume == 0 then
-                icon = beautiful.widget_audio_off
-            elseif volume < 50 then
-                icon = beautiful.widget_audio_low
-            else
-                icon = beautiful.widget_audio_high
-            end
-        end
-        self:get_children_by_id("icon")[1].image = icon
-        self:get_children_by_id("text")[1].text = " " .. volume .. "%"
-    end
-}
-
-local function update_audio_widget(widget)
-    awful.spawn.easy_async_with_shell("amixer sget Master", function(stdout)
-        local volume = stdout:match("(%d?%d?%d)%%")
-        local muted = stdout:match("%[(o%D%D?)%]")
-        widget:set_volume(tonumber(volume), muted == "off")
-    end)
-end
--- Update periodically
-gears.timer {
-    timeout = 10,
-    autostart = true,
-    callback = function() update_audio_widget(audio_widget) end
-}
-audio_widget:buttons(
-    awful.util.table.join(
-        awful.button({}, 1, function() -- Left click
-            awful.spawn("amixer -q set Master toggle", false)
-            update_audio_widget(audio_widget)
-        end),
-        awful.button({}, 4, function() -- Scroll up
-            awful.spawn("amixer -q set Master 5%+", false)
-            update_audio_widget(audio_widget)
-        end),
-        awful.button({}, 5, function() -- Scroll down
-            awful.spawn("amixer -q set Master 5%-", false)
-            update_audio_widget(audio_widget)
-        end)
-    )
-)
-
--- Initial update
-update_audio_widget(audio_widget)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -279,12 +217,11 @@ awful.screen.connect_for_each_screen(function(s)
             s.mytaglist,
             s.mypromptbox,
         },
-        s.mytasklist,     -- Middle widget
-        {                 -- Right widgets
+        s.mytasklist, -- Middle widget
+        {             -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            audio_widget, -- Add audio widget here
             wibox.widget.systray(),
-            kykeyboardlayout,
+            mykeyboardlayout,
             mytextclock,
             s.mylayoutbox,
         },
