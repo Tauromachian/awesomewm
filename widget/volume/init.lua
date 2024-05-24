@@ -11,7 +11,7 @@ local volume_widget = wibox.widget {
         widget = wibox.widget.imagebox,
     },
     {
-        id = "text",
+        id = "volume_widget",
         text = "0%",
         widget = wibox.widget.textbox,
     },
@@ -23,7 +23,7 @@ local function update_volume(widget)
     awful.spawn.easy_async("amixer get Master", function(stdout)
         local volume = string.match(stdout, "(%d?%d?%d)%%")
         volume = tonumber(volume)
-        widget:get_children_by_id("text")[1].text = volume .. "%"
+        widget:get_children_by_id("volume_widget")[1].text = volume .. "%"
     end)
 end
 
