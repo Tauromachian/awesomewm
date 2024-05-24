@@ -21,6 +21,7 @@ require("awful.hotkeys_popup.keys")
 root.keys(require('keys'))
 
 local clientkeys = require('client.keys')
+local clientbuttons = require('client.buttons')
 
 
 -- {{{ Error handling
@@ -242,21 +243,6 @@ root.buttons(gears.table.join(
 ))
 -- }}}
 
--- {{{ Key bindings
-
-clientbuttons = gears.table.join(
-    awful.button({}, 1, function(c)
-        c:emit_signal("request::activate", "mouse_click", { raise = true })
-    end),
-    awful.button({ modkey }, 1, function(c)
-        c:emit_signal("request::activate", "mouse_click", { raise = true })
-        awful.mouse.client.move(c)
-    end),
-    awful.button({ modkey }, 3, function(c)
-        c:emit_signal("request::activate", "mouse_click", { raise = true })
-        awful.mouse.client.resize(c)
-    end)
-)
 
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
