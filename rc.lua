@@ -20,6 +20,7 @@ require("awful.hotkeys_popup.keys")
 
 local battery_widget = require('widget.battery')
 local volume_widget = require('widget.volume')
+local brightness_widget = require('widget.brightness')
 
 root.keys(require('keys'))
 
@@ -231,6 +232,7 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
             battery_widget,
             volume_widget,
+            brightness_widget,
             mykeyboardlayout,
             mytextclock,
             s.mylayoutbox,
