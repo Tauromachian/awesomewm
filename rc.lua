@@ -18,6 +18,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+local battery_widget = require('widget.battery')
+
 root.keys(require('keys'))
 
 local clientkeys = require('client.keys')
@@ -226,6 +228,7 @@ awful.screen.connect_for_each_screen(function(s)
         {             -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
+            battery_widget,
             mykeyboardlayout,
             mytextclock,
             s.mylayoutbox,
