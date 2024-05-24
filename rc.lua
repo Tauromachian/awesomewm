@@ -21,6 +21,7 @@ require("awful.hotkeys_popup.keys")
 local battery_widget = require('widget.battery')
 local volume_widget = require('widget.volume')
 local brightness_widget = require('widget.brightness')
+local wifi_widget = require('widget.wifi')
 
 local startup = require('startup')
 startup()
@@ -236,6 +237,7 @@ awful.screen.connect_for_each_screen(function(s)
             battery_widget,
             volume_widget,
             brightness_widget,
+            wifi_widget,
             mykeyboardlayout,
             mytextclock,
             s.mylayoutbox,
