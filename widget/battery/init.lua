@@ -36,7 +36,7 @@ local battery_widget = wibox.widget {
         id = "text",
         widget = wibox.widget.textbox
     },
-    layout = wibox.container.margin(_, 5, 5, 5, 5),
+    layout = wibox.container.margin(nil, 5, 5, 5, 5),
     set_battery = function(self, capacity, status)
         self:get_children_by_id("text")[1]:set_text("Bat: " .. capacity .. "% (" .. status .. ")")
     end
