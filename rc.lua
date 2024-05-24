@@ -22,6 +22,9 @@ local battery_widget = require('widget.battery')
 local volume_widget = require('widget.volume')
 local brightness_widget = require('widget.brightness')
 
+local startup = require('startup')
+startup()
+
 root.keys(require('keys'))
 
 local clientkeys = require('client.keys')
