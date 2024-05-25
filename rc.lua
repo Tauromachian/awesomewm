@@ -66,8 +66,6 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("/home/jose/.config/awesome/default/theme.lua")
 
-beautiful.useless_gap = 3
-
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
