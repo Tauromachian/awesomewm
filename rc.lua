@@ -22,6 +22,7 @@ local battery_widget = require('widget.battery')
 local volume_widget = require('widget.volume')
 local brightness_widget = require('widget.brightness')
 local wifi_widget = require('widget.wifi')
+local text_clock = require("widget.clock")
 
 local startup = require('startup')
 startup()
@@ -129,10 +130,6 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Keyboard map indicator and switcher
 local mykeyboardlayout = awful.widget.keyboardlayout()
 
--- {{{ Wibar
--- Create a textclock widget
-local mytextclock = wibox.widget.textclock('%H:%M')
-
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
     awful.button({}, 1, function(t) t:view_only() end),
@@ -238,8 +235,8 @@ awful.screen.connect_for_each_screen(function(s)
             volume_widget,
             brightness_widget,
             wifi_widget,
+            text_clock,
             mykeyboardlayout,
-            mytextclock,
             s.mylayoutbox,
         },
     }
