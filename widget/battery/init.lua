@@ -40,7 +40,7 @@ local battery_widget = wibox.widget {
         widget = wibox.widget.imagebox,
         resize = true,
     },
-    layout = wibox.container.margin(nil, 5, 5, 5, 5),
+    layout = wibox.layout.fixed.horizontal,
     set_battery = function(self, capacity, status)
         local batteryIconName = '/battery'
 
