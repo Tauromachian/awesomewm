@@ -3,11 +3,14 @@ local wibox = require("wibox")
 local awful = require("awful")
 local gears = require("gears")
 
+local HOME = os.getenv('HOME')
+local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/volume/icons/'
+
 -- Create the volume widget
 local volume_widget = wibox.widget {
     {
         id = "icon",
-        image = "/usr/share/icons/Adwaita/16x16/status/audio-volume-medium-symbolic.symbolic.png", -- Path to volume icon
+        image = PATH_TO_ICONS .. '0.png', -- Path to volume icon
         widget = wibox.widget.imagebox,
     },
     {
