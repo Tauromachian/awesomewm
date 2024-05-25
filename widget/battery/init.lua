@@ -2,6 +2,9 @@
 local wibox = require("wibox")
 local gears = require("gears")
 
+local HOME = os.getenv('HOME')
+local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/battery/icons'
+
 -- Function to read battery information
 local function read_battery_info()
     local capacity = 0
@@ -33,12 +36,28 @@ end
 -- Create the battery widget
 local battery_widget = wibox.widget {
     {
-        id = "text",
-        widget = wibox.widget.textbox
+        id = "icon",
+        widget = wibox.widget.imagebox,
+        resize = true,
     },
     layout = wibox.container.margin(nil, 5, 5, 5, 5),
     set_battery = function(self, capacity, status)
-        self:get_children_by_id("text")[1]:set_text("Bat: " .. capacity .. "% (" .. status .. ")")
+        local batteryIconName = '/battery'
+
+        if status == 'Charging' or status == 'Full' then
+            batteryIconName = batteryIconName .. '-charging'
+        end
+
+        local roundedCapacity = math.floor(capacity / 10) * 10
+
+        if roundedCapacity == 100 then
+            batteryIconName = batteryIconName .. '.svg'
+        else
+            batteryIconName = batteryIconName .. '-' .. roundedCapacity .. '.svg'
+        end
+
+
+        self:get_children_by_id("icon")[1]:set_image(PATH_TO_ICONS .. batteryIconName)
     end
 }
 
