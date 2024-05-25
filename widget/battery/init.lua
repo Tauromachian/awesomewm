@@ -1,6 +1,7 @@
 -- Load required libraries
 local wibox = require("wibox")
 local gears = require("gears")
+local awful = require("awful")
 
 local HOME = os.getenv('HOME')
 local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/battery/icons'
@@ -41,7 +42,7 @@ local battery_widget = wibox.widget {
         resize = true,
     },
     layout = wibox.layout.fixed.horizontal,
-    set_battery = function(self, capacity, status)
+    set_battery = function(self, capacity, status, battery_tooltip)
         local batteryIconName = '/battery'
 
         if status == 'Charging' or status == 'Full' then
@@ -56,14 +57,24 @@ local battery_widget = wibox.widget {
             batteryIconName = batteryIconName .. '-' .. roundedCapacity .. '.svg'
         end
 
+        battery_tooltip.text = capacity .. '%'
 
         self:get_children_by_id("icon")[1]:set_image(PATH_TO_ICONS .. batteryIconName)
     end
 }
 
+local battery_tooltip = awful.tooltip(
+    {
+        objects = { battery_widget },
+        mode = 'outside',
+        align = 'left',
+        preferred_positions = { 'right', 'left', 'top', 'bottom' }
+    }
+)
+
 local function updateBatteryInfo()
     local capacity, status = read_battery_info()
-    battery_widget:set_battery(capacity, status)
+    battery_widget:set_battery(capacity, status, battery_tooltip)
 end
 
 -- Update the battery widget every minute
