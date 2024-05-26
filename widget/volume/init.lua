@@ -13,7 +13,7 @@ local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/volume/icons/'
 local volume_widget = wibox.widget {
     {
         id = "icon",
-        image = PATH_TO_ICONS .. '0.png', -- Path to volume icon
+        image = PATH_TO_ICONS .. 'volume-high.svg', -- Path to volume icon
         widget = wibox.widget.imagebox,
     },
     layout = wibox.layout.fixed.horizontal,
