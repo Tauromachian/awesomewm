@@ -34,18 +34,18 @@ local wifi_popup = awful.popup {
     border_width = 2,
     ontop = true,
     visible = false,
-    placement = function(c)
-        awful.placement.next_to(c, {
-            preferred_positions = { "top", "bottom", "left", "right" },
-            preferred_anchors = { "middle", "front", "back" },
-            geometry = wifi_widget:geometry(),
-        })
-    end,
 }
+wifi_popup.parent = wifi_widget
 
 wifi_widget:buttons(
     gears.table.join(
         awful.button({}, 1, function()
+            awful.placement.next_to(wifi_popup,
+                {
+                    preferred_positions = { "top", "bottom", "left", "right" },
+                    preferred_anchors = { "middle", "front", "back" },
+                }
+            )
             wifi_popup.visible = not wifi_popup.visible
         end)
     )
