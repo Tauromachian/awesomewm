@@ -4,7 +4,8 @@ local awful = require("awful")
 local gears = require("gears")
 local beautiful = require("beautiful")
 
-local slider = require("widget.gen.slider")
+local create_slider = require("widget.gen.slider")
+local slider = create_slider()
 
 local HOME = os.getenv('HOME')
 local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/volume/icons/'
