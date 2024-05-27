@@ -124,9 +124,6 @@ mylauncher = awful.widget.launcher({
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
--- Keyboard map indicator and switcher
-local mykeyboardlayout = awful.widget.keyboardlayout()
-
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
     awful.button({}, 1, function(t) t:view_only() end),
@@ -233,7 +230,11 @@ awful.screen.connect_for_each_screen(function(s)
             volume_widget,
             brightness_widget,
             text_clock,
-            mykeyboardlayout,
+            {
+                awful.widget.keyboardlayout(),
+                widget = wibox.container.margin,
+                bottom = 2,
+            },
             s.mylayoutbox,
         },
     }
