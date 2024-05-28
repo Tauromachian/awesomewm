@@ -221,14 +221,51 @@ awful.screen.connect_for_each_screen(function(s)
             s.mytaglist,
             s.mypromptbox,
         },
-        s.mytasklist, -- Middle widget
-        {             -- Right widgets
+        {
+            s.mytasklist,
+            widget = wibox.container.margin,
+            bottom = 2,
+            left = 3,
+            right = 3,
+            top = 2,
+        },
+        {
             layout = wibox.layout.fixed.horizontal,
             spacing = 10,
-            wibox.widget.systray(),
-            battery_widget,
-            volume_widget,
-            brightness_widget,
+            {
+
+                wibox.widget.systray(),
+                widget = wibox.container.margin,
+                left = 3,
+                right = 3,
+                top = 3,
+                bottom = 3,
+            },
+            {
+                battery_widget,
+                widget = wibox.container.margin,
+                left = 3,
+                right = 3,
+                top = 3,
+                bottom = 3,
+            },
+            {
+                volume_widget,
+                widget = wibox.container.margin,
+                left = 3,
+                right = 3,
+                top = 3,
+                bottom = 3,
+            },
+            {
+                brightness_widget,
+                widget = wibox.container.margin,
+                left = 3,
+                right = 3,
+                top = 3,
+                bottom = 3,
+            },
+
             text_clock,
             {
                 awful.widget.keyboardlayout(),
