@@ -208,6 +208,9 @@ awful.screen.connect_for_each_screen(function(s)
         screen          = s,
         filter          = awful.widget.tasklist.filter.currenttags,
         buttons         = tasklist_buttons,
+        style           = {
+            shape = gears.shape.rounder_bar,
+        },
         layout          = {
             spacing = 10,
             layout  = wibox.layout.fixed.horizontal
@@ -216,15 +219,22 @@ awful.screen.connect_for_each_screen(function(s)
         -- not a widget instance.
         widget_template = {
             {
-                id     = 'clienticon',
-                widget = awful.widget.clienticon,
+                {
+                    {
+                        id     = 'icon_role',
+                        widget = wibox.widget.imagebox,
+                    },
+                    margins = 2,
+                    widget  = wibox.container.margin,
+                },
+                left   = 1,
+                right  = 1,
+                widget = wibox.container.margin
+
             },
-            nil,
-            create_callback = function(self, c, index, objects) --luacheck: no unused args
-                self:get_children_by_id('clienticon')[1].client = c
-            end,
-            layout = wibox.layout.align.vertical,
-        },
+            id     = 'background_role',
+            widget = wibox.container.background,
+        }
     }
 
     -- Create the wibox
