@@ -20,6 +20,7 @@ require("awful.hotkeys_popup.keys")
 
 local make_task_list = require('widget.task-list')
 local make_tag_list = require('widget.tag-list')
+local make_right_widgets = require('widget.right-widgets')
 
 local battery_widget = require('widget.battery')
 local volume_widget = require('widget.volume')
@@ -169,6 +170,8 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a tasklist widget
     s.mytasklist = make_task_list(s)
 
+    local right_widgets = make_right_widgets(s)
+
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
@@ -196,47 +199,7 @@ awful.screen.connect_for_each_screen(function(s)
         {
             layout = wibox.layout.fixed.horizontal,
             spacing = 10,
-            {
-
-                wibox.widget.systray(),
-                widget = wibox.container.margin,
-                left = 3,
-                right = 3,
-                top = 3,
-                bottom = 3,
-            },
-            {
-                battery_widget,
-                widget = wibox.container.margin,
-                left = 3,
-                right = 3,
-                top = 3,
-                bottom = 3,
-            },
-            {
-                volume_widget,
-                widget = wibox.container.margin,
-                left = 3,
-                right = 3,
-                top = 3,
-                bottom = 3,
-            },
-            {
-                brightness_widget,
-                widget = wibox.container.margin,
-                left = 3,
-                right = 3,
-                top = 3,
-                bottom = 3,
-            },
-
-            text_clock,
-            {
-                awful.widget.keyboardlayout(),
-                widget = wibox.container.margin,
-                bottom = 2,
-            },
-            s.mylayoutbox,
+            right_widgets,
         },
     }
 end)
