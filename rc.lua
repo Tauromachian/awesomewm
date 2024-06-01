@@ -18,6 +18,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+local make_task_list = require('widget.task-list')
+
 local battery_widget = require('widget.battery')
 local volume_widget = require('widget.volume')
 local brightness_widget = require('widget.brightness')
@@ -149,28 +151,6 @@ local taglist_buttons = gears.table.join(
     awful.button({}, 5, function(t) awful.tag.viewprev(t.screen) end)
 )
 
-local tasklist_buttons = gears.table.join(
-    awful.button({}, 1, function(c)
-        if c == client.focus then
-            c.minimized = true
-        else
-            c:emit_signal(
-                "request::activate",
-                "tasklist",
-                { raise = true }
-            )
-        end
-    end),
-    awful.button({}, 3, function()
-        awful.menu.client_list({ theme = { width = 250 } })
-    end),
-    awful.button({}, 4, function()
-        awful.client.focus.byidx(1)
-    end),
-    awful.button({}, 5, function()
-        awful.client.focus.byidx(-1)
-    end))
-
 local function set_wallpaper(s)
     -- Wallpaper
     if beautiful.wallpaper then
@@ -211,38 +191,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist {
-        screen          = s,
-        filter          = awful.widget.tasklist.filter.currenttags,
-        buttons         = tasklist_buttons,
-        style           = {
-            shape = gears.shape.rounder_bar,
-        },
-        layout          = {
-            spacing = 10,
-            layout  = wibox.layout.fixed.horizontal
-        },
-        -- Notice that there is *NO* wibox.wibox prefix, it is a template,
-        -- not a widget instance.
-        widget_template = {
-            {
-                {
-                    {
-                        id     = 'icon_role',
-                        widget = wibox.widget.imagebox,
-                    },
-                    margins = 2,
-                    widget  = wibox.container.margin,
-                },
-                left   = 1,
-                right  = 1,
-                widget = wibox.container.margin
-
-            },
-            id     = 'background_role',
-            widget = wibox.container.background,
-        }
-    }
+    s.mytasklist = make_task_list(s)
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
