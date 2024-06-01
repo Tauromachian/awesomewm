@@ -31,6 +31,13 @@ root.keys(require('keys'))
 local clientkeys = require('client.keys')
 local clientbuttons = require('client.buttons')
 
+clientbuttons = gears.table.join(
+    awful.button({ "Mod1" }, 1, function(c)
+        c:emit_signal("request:activate", "mouse_click", { raise = false })
+        awful.mouse.client.move(c)
+    end)
+)
+
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
