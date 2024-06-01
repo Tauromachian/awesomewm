@@ -5,6 +5,7 @@ local battery_widget = require('widget.battery')
 local volume_widget = require('widget.volume')
 local brightness_widget = require('widget.brightness')
 local text_clock = require("widget.clock")
+local keyboard_layout = require('widget.keyboard')
 
 local function make_right_widgets(s)
     return {
@@ -46,7 +47,7 @@ local function make_right_widgets(s)
 
         text_clock,
         {
-            awful.widget.keyboardlayout(),
+            keyboard_layout,
             widget = wibox.container.margin,
             bottom = 2,
         },
