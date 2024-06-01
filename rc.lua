@@ -165,6 +165,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a tasklist widget
     s.mytasklist = make_task_list(s)
 
+    -- Create all icons normally found on the right, like the systray and the clock 
     local right_widgets = make_right_widgets(s)
 
     -- Create the wibox
