@@ -29,7 +29,7 @@ keyboard_layout:buttons(
                 end
 
                 awful.spawn("setxkbmap " .. new_layout, false)
-                update_keyboard_layout()
+                keyboard_layout.text = " " .. new_layout .. " "
             end)
         end)
     )
