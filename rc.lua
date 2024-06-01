@@ -249,7 +249,12 @@ awful.screen.connect_for_each_screen(function(s)
             s.mypromptbox,
         },
         {
-            s.mytasklist,
+            {
+                s.mytasklist,
+                valign = "center",
+                halign = "center",
+                widget = wibox.container.place,
+            },
             widget = wibox.container.margin,
             bottom = 2,
             left = 3,
