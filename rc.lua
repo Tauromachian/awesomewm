@@ -22,11 +22,6 @@ local make_task_list = require('widget.task-list')
 local make_tag_list = require('widget.tag-list')
 local make_right_widgets = require('widget.right-widgets')
 
-local battery_widget = require('widget.battery')
-local volume_widget = require('widget.volume')
-local brightness_widget = require('widget.brightness')
-local text_clock = require("widget.clock")
-
 local startup = require('startup')
 startup()
 
