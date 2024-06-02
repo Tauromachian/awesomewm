@@ -68,16 +68,4 @@ end)
 
 update_brightness(brightness_widget)
 
--- slider:buttons(
---     gears.table.join(
---         awful.button({}, 4, function()
---             slider.value = math.min(slider.value + 5, 100) -- Scroll up: increase value
---         end),
---         awful.button({}, 5, function()
---             slider.value = math.max(slider.value - 5, 0) -- Scroll down: decrease value
---         end)
---     )
--- )
-
-
 return brightness_widget
