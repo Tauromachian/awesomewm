@@ -1,10 +1,18 @@
 local wibox = require('wibox')
 local awful = require('awful')
 local gears = require('gears')
-local beautiful = require("beautiful")
 
 local create_slider = require("widget.generic.slider")
+local make_popup = require("widget.generic.popup")
+
 local slider = create_slider()
+
+local brightness_slider = {
+    value         = 0.5,
+    forced_height = 30,
+    forced_width  = 200,
+    widget        = slider,
+}
 
 local HOME = os.getenv('HOME')
 local PATH_TO_ICONS = HOME .. '/.config/awesome/widget/brightness/icons/'
@@ -18,31 +26,8 @@ local brightness_widget = wibox.widget {
     layout = wibox.layout.fixed.horizontal
 }
 
-local brightness_popup = awful.popup {
-    widget = {
-        {
-            {
-                text   = 'Brightness',
-                widget = wibox.widget.textbox
-            },
-            {
-                value         = 0.5,
-                forced_height = 30,
-                forced_width  = 200,
-                widget        = slider,
-            },
-            layout = wibox.layout.fixed.vertical,
-        },
-        margins = 10,
-        widget  = wibox.container.margin
-    },
-    border_color = beautiful.border_color,
-    border_width = 2,
-    ontop = true,
-    visible = false,
-}
+local brightness_popup = make_popup('Brightness', brightness_slider)
 brightness_popup.parent = brightness_widget
-
 
 local function update_brightness(widget)
     awful.spawn.easy_async('brightnessctl get', function(stdout)
