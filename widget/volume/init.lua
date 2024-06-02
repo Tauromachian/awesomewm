@@ -56,13 +56,13 @@ end
 volume_widget:buttons(
     gears.table.join(
         awful.button({}, 1, function()
-            awful.placement.next_to(wifi_popup,
+            awful.placement.next_to(volume_popup,
                 {
                     preferred_positions = { "bottom" },
                     preferred_anchors = { "back" },
                 }
             )
-            wifi_popup.visible = not wifi_popup.visible
+            volume_popup.visible = not volume_popup.visible
         end)
     )
 )
