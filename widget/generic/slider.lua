@@ -3,7 +3,7 @@ local gears = require("gears")
 local beautiful = require("beautiful")
 local awful = require("awful")
 
-local function create_slider()
+local function make_slider()
     local slider = wibox.widget {
         bar_shape           = gears.shape.rounded_rect,
         bar_height          = 3,
@@ -31,4 +31,4 @@ local function create_slider()
 end
 
 
-return create_slider
+return make_slider

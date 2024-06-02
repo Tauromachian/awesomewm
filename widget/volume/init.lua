@@ -3,10 +3,10 @@ local wibox = require("wibox")
 local awful = require("awful")
 local gears = require("gears")
 
-local create_slider = require("widget.generic.slider")
+local make_slider = require("widget.generic.slider")
 local make_popup = require("widget.generic.popup")
 
-local slider = create_slider()
+local slider = make_slider()
 
 local volume_slider = {
     value         = 0.5,
