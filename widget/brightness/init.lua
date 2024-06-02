@@ -3,7 +3,7 @@ local awful = require('awful')
 local gears = require('gears')
 local beautiful = require("beautiful")
 
-local create_slider = require("widget.gen.slider")
+local create_slider = require("widget.generic.slider")
 local slider = create_slider()
 
 local HOME = os.getenv('HOME')
