@@ -165,7 +165,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a tasklist widget
     s.mytasklist = make_task_list(s)
 
-    -- Create all icons normally found on the right, like the systray and the clock 
+    -- Create all icons normally found on the right, like the systray and the clock
     local right_widgets = make_right_widgets(s)
 
     -- Create the wibox
@@ -173,7 +173,7 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Add widgets to the wibox
     s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
+        layout = wibox.layout.flex.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             s.mytaglist,
@@ -193,8 +193,8 @@ awful.screen.connect_for_each_screen(function(s)
             top = 2,
         },
         {
-            layout = wibox.layout.fixed.horizontal,
-            spacing = 10,
+            layout = wibox.container.place,
+            halign = "right",
             right_widgets,
         },
     }
