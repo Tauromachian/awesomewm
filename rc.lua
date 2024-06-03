@@ -69,7 +69,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/home/jose/.config/awesome/default/theme.lua")
+beautiful.init("/home/jose/.config/awesome/theme/init.lua")
 
 
 -- This is used later as the default terminal and editor to run.
