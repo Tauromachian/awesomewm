@@ -79,7 +79,7 @@ end
 
 -- Update the battery widget every minute
 gears.timer {
-    timeout = 60,
+    timeout = 20,
     autostart = true,
     callback = updateBatteryInfo
 }
