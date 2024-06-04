@@ -2,35 +2,40 @@
 -- Default awesome theme --
 ---------------------------
 
-local theme_assets                              = require("beautiful.theme_assets")
-local xresources                                = require("beautiful.xresources")
-local dpi                                       = xresources.apply_dpi
+local theme_assets         = require("beautiful.theme_assets")
+local xresources           = require("beautiful.xresources")
+local dpi                  = xresources.apply_dpi
 
-local gfs                                       = require("gears.filesystem")
-local themes_path                               = gfs.get_themes_dir()
+local gfs                  = require("gears.filesystem")
+local themes_path          = gfs.get_themes_dir()
 
-local theme                                     = {}
+local theme                = {}
 
-theme.font                                      = "NotoSans-Regular 9"
+theme.font                 = "NotoSans-Regular 9"
 
-theme.bg_normal                                 = "#222222"
-theme.bg_focus                                  = "#535d6c"
-theme.bg_urgent                                 = "#ff0000"
-theme.bg_minimize                               = "#444444"
-theme.bg_systray                                = theme.bg_normal
+theme.bg_normal            = "#140c0b"
+theme.bg_focus             = "#492b28"
+theme.bg_urgent            = "#2a1f1e"
+theme.bg_minimize          = "#444444"
+theme.bg_systray           = theme.bg_normal
 
-theme.systray_icon_spacing                      = 10
+theme.systray_icon_spacing = 10
 
-theme.fg_normal                                 = "#aaaaaa"
-theme.fg_focus                                  = "#ffffff"
-theme.fg_urgent                                 = "#ffffff"
-theme.fg_minimize                               = "#ffffff"
+theme.fg_normal            = "#e2ccb0"
+theme.fg_focus             = "#d88166"
+theme.fg_urgent            = "#CC9393"
+theme.fg_minimize          = "#ffffff"
 
-theme.useless_gap                               = dpi(3)
-theme.border_width                              = dpi(1)
-theme.border_normal                             = "#000000"
-theme.border_focus                              = "#535d6c"
-theme.border_marked                             = "#91231c"
+theme.useless_gap          = dpi(3)
+theme.border_width         = dpi(1)
+
+theme.border_normal        = "#302627"
+theme.border_focus         = "#c2745b"
+theme.border_marked        = "#CC9393"
+
+theme.taglist_fg_focus     = "#c2745b"
+theme.taglist_bg_focus     = "#140c0b"
+
 
 -- There are other variable sets
 -- overriding the default one when
