@@ -43,7 +43,7 @@ local function update_brightness(widget)
 end
 
 gears.timer {
-    timeout = 10,
+    timeout = 60,
     autostart = true,
     callback = update_brightness
 }
