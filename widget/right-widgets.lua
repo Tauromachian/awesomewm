@@ -50,7 +50,14 @@ local function make_right_widgets(s)
             bottom = 2,
         },
         text_clock,
-        s.mylayoutbox,
+        {
+            text = " ",
+            widget = wibox.container.margin,
+            left = 3,
+            right = 3,
+            top = 3,
+            bottom = 3,
+        },
     }
 end
 
