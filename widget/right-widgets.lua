@@ -44,13 +44,12 @@ local function make_right_widgets(s)
             top = 3,
             bottom = 3,
         },
-
-        text_clock,
         {
             keyboard_layout,
             widget = wibox.container.margin,
             bottom = 2,
         },
+        text_clock,
         s.mylayoutbox,
     }
 end
