@@ -178,12 +178,26 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             s.mytaglist,
             {
+                {
+                    widget = wibox.widget.textbox,
+                    text = "||",
+                },
                 widget = wibox.container.margin,
-                left = 3,
-                right = 3,
+                bottom = 1,
+            },
+            {
+                widget = wibox.container.margin,
                 top = 3,
                 bottom = 3,
                 s.mylayoutbox,
+            },
+            {
+                {
+                    widget = wibox.widget.textbox,
+                    text = "||",
+                },
+                widget = wibox.container.margin,
+                bottom = 1,
             },
             s.mypromptbox,
             spacing = 20,
