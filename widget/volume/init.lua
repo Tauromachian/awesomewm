@@ -32,10 +32,10 @@ local volume_popup = make_popup('Volume', volume_slider)
 volume_popup.parent = volume_widget
 
 local function update_volume(widget)
-    awful.spawn.easy_async("amixer get Master", function(stdout)
-        local volume = string.match(stdout, "(%d?%d?%d)%%")
+    awful.spawn.easy_async("pactl get-sink-volume @DEFAULT_SINK@", function(stdout)
+        local volume = stdout:match("(%d?%d?%d)%%")
         volume = tonumber(volume)
-        widget.value = volume
+        widget.text = "Volume: " .. volume .. "%"
     end)
 end
 
@@ -55,7 +55,7 @@ volume_widget:buttons(
 
 update_volume(slider)
 slider:connect_signal('property::value', function(widget)
-    awful.spawn("amixer set Master " .. widget.value .. "%")
+    awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ " .. widget.value .. "%")
 end)
 
 
