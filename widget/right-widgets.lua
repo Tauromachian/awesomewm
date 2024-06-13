@@ -1,11 +1,11 @@
 local wibox = require("wibox")
-local awful = require("awful")
 
 local battery_widget = require('widget.battery')
 local volume_widget = require('widget.volume')
 local brightness_widget = require('widget.brightness')
 local text_clock = require("widget.clock")
 local keyboard_layout = require('widget.keyboard')
+local bluetooth_widget = require("widget.bluetooth")
 
 local function make_right_widgets(s)
     return {
@@ -14,6 +14,14 @@ local function make_right_widgets(s)
         {
 
             wibox.widget.systray(),
+            widget = wibox.container.margin,
+            left = 3,
+            right = 3,
+            top = 3,
+            bottom = 3,
+        },
+        {
+            bluetooth_widget,
             widget = wibox.container.margin,
             left = 3,
             right = 3,
