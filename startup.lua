@@ -1,7 +1,6 @@
 local awful = require('awful')
 
 local startup_apps = {
-    'blueman-applet',
     'nm-applet'
 }
 
