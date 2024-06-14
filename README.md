@@ -9,6 +9,21 @@ Minimalist Awesome WM theme.
 That's that. I have to consider how feasible is to make widgets for this functionalities from the ground up to avoid further dependencies.
 I don't want to use the terminal to do something like choosing a bluetooth device.
 
+### Fonts
+
+The default font is Noto sans, both for the tags icons and text
+
+
 ## Minor changes to defaults
 
 I inverted the functioning of Super + j and Super + k. Now it is a little more intuitive for NVim users.
+
+## Credits
+
+To [ Copycat theme ]( https://github.com/lcpz/awesome-copycats )
+
+This config's theme is inspired in their Steamburn one.
+
+To [ Chris Titus Tech ](https://github.com/ChrisTitusTech/titus-awesome)
+
+I copied some of his icons and project structure. 
