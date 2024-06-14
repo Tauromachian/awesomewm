@@ -2,6 +2,8 @@
 ## Description
 Minimalist [ Awesome WM 4.3 ](https://awesomewm.org/) theme.
 
+![Theme](https://images.jose-garcia.net/awesomewm.png)
+
 ## Dependencies
  - Blueman. For Bluetooth.
  - Network Manager. For WiFi.
