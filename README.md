@@ -1,6 +1,6 @@
 # Awesome WM
 ## Description
-Minimalist Awesome WM theme.
+Minimalist [ Awesome WM 4.3 ](https://awesomewm.org/) theme.
 
 ## Dependencies
  - `blueman-applet`. For Bluetooth.
