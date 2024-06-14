@@ -3,8 +3,8 @@
 Minimalist [ Awesome WM 4.3 ](https://awesomewm.org/) theme.
 
 ## Dependencies
- - `blueman-applet`. For Bluetooth.
- - `nm-applet`. For WiFi.
+ - Blueman. For Bluetooth.
+ - Network Manager. For WiFi.
 
 I have to consider how feasible is to make widgets for this functionalities from the ground up to avoid dependencies.
 I don't want to use the terminal to do something like choosing a Bluetooth device.
