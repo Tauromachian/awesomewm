@@ -19,7 +19,7 @@ local taglist_buttons = gears.table.join(
 )
 
 local function make_tag_list(s)
-    awful.tag({ " 1 ", " 2 ", " 3 ", " utils ", " music" }, s, awful.layout.layouts[1])
+    awful.tag({ "  ", "  ", "  ", "  ", "  " }, s, awful.layout.layouts[1])
 
     return awful.widget.taglist {
         screen  = s,
