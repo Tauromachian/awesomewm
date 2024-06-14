@@ -2,6 +2,8 @@ local wibox = require('wibox')
 local awful = require('awful')
 local beautiful = require("beautiful")
 
+local add_click_outside = require("helpers.click_to_hide")
+
 local function make_popup(title, content)
     local popup_widget = awful.popup {
         widget = {
@@ -21,6 +23,8 @@ local function make_popup(title, content)
         ontop = true,
         visible = false,
     }
+
+    add_click_outside(popup_widget)
 
     return popup_widget
 end
