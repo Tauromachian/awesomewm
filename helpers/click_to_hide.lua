@@ -1,24 +1,26 @@
 local function add_click_outside(widget)
+    local function handle_click_outside(mouse)
+        local any_button_pressed = false
+        for _, button_state in ipairs(mouse.buttons) do
+            if button_state then
+                any_button_pressed = true
+                break
+            end
+        end
+
+        if any_button_pressed then
+            widget.visible = false
+        end
+
+        return true
+    end
+
     widget:connect_signal('mouse::leave', function()
         local mouse_coords = mouse.coords()
         local popup_geo = widget:geometry()
 
         if mouse_coords.x < popup_geo.x or mouse_coords.x > popup_geo.width + popup_geo.x or mouse_coords.y < popup_geo.y or mouse_coords.y > popup_geo.height + popup_geo.y then
-            mousegrabber.run(function(mouse)
-                local any_button_pressed = false
-                for _, button_state in ipairs(mouse.buttons) do
-                    if button_state then
-                        any_button_pressed = true
-                        break
-                    end
-                end
-
-                if any_button_pressed then
-                    widget.visible = false
-                end
-
-                return true
-            end, 'arrow')
+            mousegrabber.run(handle_click_outside, 'arrow')
         end
     end)
 
