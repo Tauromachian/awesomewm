@@ -22,7 +22,7 @@ I inverted the functioning of Super + j and Super + k. Now it is a little more i
 
 To [ Copycat theme ]( https://github.com/lcpz/awesome-copycats )
 
-This config's theme is inspired in their Steamburn one.
+This theme is inspired in their Steamburn.
 
 To [ Chris Titus Tech ](https://github.com/ChrisTitusTech/titus-awesome)
 
