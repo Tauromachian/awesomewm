@@ -28,7 +28,7 @@ local function make_popup(title, content, parent)
         popup_widget.parent = parent
     end
 
-    add_click_outside(popup_widget, parent)
+    add_click_outside(popup_widget)
 
     return popup_widget
 end
