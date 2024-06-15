@@ -2,7 +2,7 @@ local wibox = require('wibox')
 local awful = require('awful')
 local beautiful = require("beautiful")
 
-local add_click_outside = require("helpers.click_to_hide")
+local add_click_outside = require("utils.click_to_hide")
 
 local function make_popup(title, content, parent)
     local popup_widget = awful.popup {
