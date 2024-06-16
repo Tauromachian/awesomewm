@@ -6,7 +6,7 @@ local add_click_outside = require("utils.click_to_hide")
 
 local function make_popup(title, content, parent)
     local popup_widget = awful.popup {
-        widget = {
+        widget       = {
             {
                 {
                     text   = title,
@@ -20,13 +20,10 @@ local function make_popup(title, content, parent)
         },
         border_color = beautiful.border_color,
         border_width = 2,
-        ontop = true,
-        visible = false,
+        ontop        = true,
+        visible      = false,
+        parent       = parent
     }
-
-    if parent then
-        popup_widget.parent = parent
-    end
 
     add_click_outside(popup_widget)
 
