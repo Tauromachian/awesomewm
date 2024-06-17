@@ -35,4 +35,4 @@ keyboard_layout:buttons(
     )
 )
 
-return keyboard_layout
+return { keyboard_layout = keyboard_layout, set_keyboard_layout = set_keyboard_layout }
