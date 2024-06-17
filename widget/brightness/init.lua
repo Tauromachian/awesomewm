@@ -29,11 +29,7 @@ local brightness_widget = wibox.widget {
 local brightness_popup = make_popup('Brightness', brightness_slider)
 brightness_popup.parent = brightness_widget
 
-local function update_brightness(widget)
-    if not widget then
-        return
-    end
-
+local function update_brightness()
     awful.spawn.easy_async('brightnessctl get', function(stdout)
         local brightness = tonumber(stdout)
         awful.spawn.easy_async('brightnessctl m', function(max_brightness_stdout)
@@ -70,6 +66,6 @@ slider:connect_signal('property::value', function(widget)
     awful.spawn("brightnessctl set " .. widget.value .. "%")
 end)
 
-update_brightness(brightness_widget)
+update_brightness()
 
 return brightness_widget
