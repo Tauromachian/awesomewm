@@ -29,7 +29,7 @@ local volume_widget = wibox.widget {
 
 local volume_popup = make_popup('Volume', volume_slider, volume_widget)
 
-local function update_volume(widget)
+local function update_volume()
     awful.spawn.easy_async("pactl get-sink-volume @DEFAULT_SINK@", function(stdout)
         local volume = stdout:match("(%d?%d?%d)%%")
         volume = tonumber(volume)
@@ -51,7 +51,7 @@ volume_widget:buttons(
     )
 )
 
-update_volume(slider)
+update_volume()
 slider:connect_signal('property::value', function(widget)
     awful.spawn("pactl set-sink-volume @DEFAULT_SINK@ " .. widget.value .. "%")
 end)
