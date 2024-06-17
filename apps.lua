@@ -1,5 +1,6 @@
 local apps = {
-    bluetooth = 'blueman-manager'
+    bluetooth = 'blueman-manager',
+    file_manager = 'nemo'
 }
 
 return apps
