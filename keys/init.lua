@@ -7,6 +7,8 @@ local apps = require("apps")
 
 local modkey = 'Mod4'
 
+local update_keyboard_layout = require('widget.keyboard').set_keyboard_layout
+
 -- {{{ Key bindings
 local globalkeys = gears.table.join(
     awful.key({ modkey, }, "s", hotkeys_popup.show_help,
@@ -63,6 +65,10 @@ local globalkeys = gears.table.join(
         { description = "open a terminal", group = "launcher" }),
     awful.key({ modkey, "Control" }, "r", _G.awesome.restart,
         { description = "reload awesome", group = "awesome" }),
+    awful.key({ modkey, "Control" }, "space", function()
+            update_keyboard_layout()
+        end,
+        { description = "Change keyboard layout", group = "awesome" }),
     awful.key({ modkey, "Shift" }, "q", _G.awesome.quit,
         { description = "quit awesome", group = "awesome" }),
     awful.key({ modkey, }, "l", function() awful.tag.incmwfact(0.05) end,
