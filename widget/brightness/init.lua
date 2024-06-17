@@ -41,7 +41,7 @@ local function update_brightness(widget)
 
             local brightness_percent = math.floor(brightness * 100 / maxBrightness)
 
-            widget:get_children_by_id("brightness_widget")[1].text = brightness_percent .. "%"
+            slider.value = brightness_percent
         end)
     end)
 end
