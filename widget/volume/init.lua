@@ -33,7 +33,7 @@ local function update_volume(widget)
     awful.spawn.easy_async("pactl get-sink-volume @DEFAULT_SINK@", function(stdout)
         local volume = stdout:match("(%d?%d?%d)%%")
         volume = tonumber(volume)
-        widget.text = "Volume: " .. volume .. "%"
+        slider.value = volume
     end)
 end
 
