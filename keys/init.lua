@@ -9,10 +9,6 @@ local modkey = 'Mod4'
 
 -- {{{ Key bindings
 local globalkeys = gears.table.join(
-    awful.key({ modkey, }, "e", function()
-            awful.spawn(apps.file_manager)
-        end,
-        { description = "Open file manager", group = "awesome" }),
     awful.key({ modkey, }, "s", hotkeys_popup.show_help,
         { description = "show help", group = "awesome" }),
     awful.key({ modkey, }, "Left", awful.tag.viewprev,
@@ -58,6 +54,11 @@ local globalkeys = gears.table.join(
         { description = "go back", group = "client" }),
 
     -- Standard program
+    --
+    awful.key({ modkey, }, "e", function()
+            awful.spawn(apps.file_manager)
+        end,
+        { description = "Open file manager", group = "launcher" }),
     awful.key({ modkey, }, "Return", function() awful.spawn(terminal) end,
         { description = "open a terminal", group = "launcher" }),
     awful.key({ modkey, "Control" }, "r", _G.awesome.restart,
