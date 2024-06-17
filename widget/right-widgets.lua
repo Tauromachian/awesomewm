@@ -4,7 +4,7 @@ local battery_widget = require('widget.battery')
 local volume_widget = require('widget.volume')
 local brightness_widget = require('widget.brightness')
 local text_clock = require("widget.clock")
-local keyboard_layout = require('widget.keyboard')
+local keyboard_layout = require('widget.keyboard').keyboard_layout
 
 local function make_right_widgets(s)
     return {
