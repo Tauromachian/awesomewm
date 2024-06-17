@@ -20,6 +20,7 @@ local function make_popup(title, content, parent)
         },
         border_color = beautiful.border_color,
         border_width = 2,
+        placement    = {},
         ontop        = true,
         visible      = false,
         parent       = parent
