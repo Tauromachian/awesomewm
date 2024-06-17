@@ -37,11 +37,6 @@ keyboard_layout:buttons(
     )
 )
 
-gears.timer {
-    timeout   = 60,
-    autostart = true,
-    callback  = update_keyboard_layout
-}
 update_keyboard_layout()
 
 return keyboard_layout
