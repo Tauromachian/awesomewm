@@ -20,6 +20,8 @@ The default font is Noto sans, both for the tags icons and text
 
 I inverted the functioning of Super + j and Super + k. Now it is a little more intuitive for NVim users.
 
+`Alt` + `clickdrag` Allows you to move the windows
+
 ## Credits
 
 To [ Copycat theme ]( https://github.com/lcpz/awesome-copycats )
