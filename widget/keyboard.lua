@@ -8,12 +8,10 @@ local keyboard_layout = wibox.widget {
     widget = wibox.widget.textbox,
 }
 
-local function update_keyboard_layout()
-    awful.spawn.easy_async("setxkbmap -query", function(stdout)
-        local layout = stdout:match("layout:%s+(%w+)")
-        keyboard_layout.text = " " .. layout .. " "
-    end)
-end
+awful.spawn.easy_async("setxkbmap -query", function(stdout)
+    local layout = stdout:match("layout:%s+(%w+)")
+    keyboard_layout.text = " " .. layout .. " "
+end)
 
 local function set_keyboard_layout()
     awful.spawn.easy_async("setxkbmap -query", function(stdout)
@@ -36,7 +34,5 @@ keyboard_layout:buttons(
         awful.button({}, 1, set_keyboard_layout)
     )
 )
-
-update_keyboard_layout()
 
 return keyboard_layout
