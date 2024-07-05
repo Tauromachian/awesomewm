@@ -5,6 +5,8 @@ local gears = require("gears")
 local clientkeys = require('client.keys')
 local clientbuttons = require('client.buttons')
 
+local apps = require('apps')
+
 clientbuttons = gears.table.join(
     awful.button({ "Mod1" }, 1, function(c)
         c:emit_signal("request:activate", "mouse_click", { raise = false })
@@ -60,7 +62,15 @@ local rules = {
                 "pop-up",        -- e.g. Google Chrome's (detached) Developer Tools.
             }
         },
-        properties = { floating = true }
+        properties = { floating = false }
+    },
+
+    {
+        rule_any = {
+            instance = { apps.password_manager, apps.vpn, 'arandr' },
+        },
+        properties = { tag = "  " }
+
     },
 
     -- Add titlebars to normal clients and dialogs
