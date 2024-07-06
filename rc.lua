@@ -22,6 +22,8 @@ local make_task_list = require('widget.task-list')
 local make_tag_list = require('widget.tag-list')
 local make_right_widgets = require('widget.right-widgets')
 
+require("utils.back-to-internal-screen")
+
 local rules = require("rules")
 
 local startup = require('startup')
