@@ -22,6 +22,16 @@ I inverted the functioning of Super + j and Super + k. Now it is a little more i
 
 `Alt` + `clickdrag` Allows you to move the windows
 
+## Apps
+You can find the apps I expect are used by default in the apps.lua file.
+Replace these with your own apps
+
+Default apps:
+ - nemo
+ - nordpass
+ - windscribe
+ - flameshot
+
 ## Credits
 
 To [ Copycat theme ]( https://github.com/lcpz/awesome-copycats )
