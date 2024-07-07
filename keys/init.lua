@@ -60,7 +60,7 @@ local globalkeys = gears.table.join(
     awful.key({ modkey, }, "Print", function()
             awful.spawn(apps.screenshot)
         end,
-        { description = "show help", group = "awesome" }),
+        { description = "Launch flameshot", group = "launcher" }),
 
     awful.key({ modkey, }, "e", function()
             awful.spawn(apps.file_manager)
