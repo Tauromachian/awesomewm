@@ -18,7 +18,11 @@ local function get_click_inside_widget(widget)
 end
 
 local function add_click_outside(widget)
-    local function handle_click_outside(mouse)
+    local function handle_click_outside(mouse, is_first_run)
+        if is_first_run then
+            return true
+        end
+
         local any_button_pressed = is_any_button_pressed(mouse)
 
         if any_button_pressed then
