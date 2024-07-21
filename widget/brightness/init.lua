@@ -26,8 +26,7 @@ local brightness_widget = wibox.widget {
     layout = wibox.layout.fixed.horizontal
 }
 
-local brightness_popup = make_popup('Brightness', brightness_slider)
-brightness_popup.parent = brightness_widget
+local brightness_popup = make_popup('Brightness', brightness_slider, brightness_widget)
 
 local function update_brightness()
     awful.spawn.easy_async('brightnessctl get', function(stdout)
