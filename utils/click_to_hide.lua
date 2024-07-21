@@ -19,6 +19,11 @@ end
 
 local function add_click_outside(widget)
     local function handle_click_outside(mouse, is_first_run)
+        local is_inside_widget = get_click_inside_widget(widget)
+        if is_inside_widget then
+            return false
+        end
+
         if is_first_run then
             return true
         end
