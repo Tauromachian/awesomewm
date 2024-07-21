@@ -42,12 +42,6 @@ local function add_click_outside(widget)
         mousegrabber.run(handle_click_outside, 'arrow')
     end)
 
-
-    widget:connect_signal('mouse::enter', function()
-        mousegrabber.stop()
-    end)
-
-
     widget:connect_signal('property::visible', function()
         if widget.visible then
             local is_first_run = true
