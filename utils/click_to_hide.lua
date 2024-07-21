@@ -39,11 +39,7 @@ local function add_click_outside(widget)
     end
 
     widget:connect_signal('mouse::leave', function()
-        local is_click_outside = get_click_outside_widget(widget)
-
-        if is_click_outside then
-            mousegrabber.run(handle_click_outside, 'arrow')
-        end
+        mousegrabber.run(handle_click_outside, 'arrow')
     end)
 
 
