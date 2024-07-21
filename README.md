@@ -19,6 +19,7 @@ The default font is Noto sans, both for the tags icons and text
 ## Minor changes to defaults
 
 I inverted the functioning of Super + j and Super + k. Now it is a little more intuitive for NVim users.
+I also inverted the Shift + j and Shift + k to change the app's order.
 
 `Alt` + `clickdrag` Allows you to move the windows
 
