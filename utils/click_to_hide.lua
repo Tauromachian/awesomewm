@@ -6,15 +6,15 @@ local function is_any_button_pressed(mouse)
     end
 end
 
-local function get_click_outside_widget(widget)
+local function get_click_inside_widget(widget)
     local mouse_coords = mouse.coords()
     local popup_geo = widget:geometry()
 
     if mouse_coords.x < popup_geo.x or mouse_coords.x > popup_geo.width + popup_geo.x or mouse_coords.y < popup_geo.y or mouse_coords.y > popup_geo.height + popup_geo.y then
-        return true
+        return false
     end
 
-    return false
+    return true
 end
 
 local function add_click_outside(widget)
