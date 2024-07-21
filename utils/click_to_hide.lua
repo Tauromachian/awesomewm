@@ -6,6 +6,17 @@ local function is_any_button_pressed(mouse)
     end
 end
 
+local function get_click_outside_widget(widget)
+    local mouse_coords = mouse.coords()
+    local popup_geo = widget:geometry()
+
+    if mouse_coords.x < popup_geo.x or mouse_coords.x > popup_geo.width + popup_geo.x or mouse_coords.y < popup_geo.y or mouse_coords.y > popup_geo.height + popup_geo.y then
+        return true
+    end
+
+    return false
+end
+
 local function add_click_outside(widget)
     local function handle_click_outside(mouse)
         local any_button_pressed = is_any_button_pressed(mouse)
@@ -18,10 +29,9 @@ local function add_click_outside(widget)
     end
 
     widget:connect_signal('mouse::leave', function()
-        local mouse_coords = mouse.coords()
-        local popup_geo = widget:geometry()
+        local is_click_outside = get_click_outside_widget(widget)
 
-        if mouse_coords.x < popup_geo.x or mouse_coords.x > popup_geo.width + popup_geo.x or mouse_coords.y < popup_geo.y or mouse_coords.y > popup_geo.height + popup_geo.y then
+        if is_click_outside then
             mousegrabber.run(handle_click_outside, 'arrow')
         end
     end)
