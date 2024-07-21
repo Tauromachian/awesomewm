@@ -32,6 +32,7 @@ local function add_click_outside(widget)
 
         if any_button_pressed then
             widget.visible = false
+            return false
         end
 
         return true
