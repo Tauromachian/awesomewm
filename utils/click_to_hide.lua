@@ -49,7 +49,21 @@ local function add_click_outside(widget)
 
 
     widget:connect_signal('property::visible', function()
-        if not widget.visible then
+        if widget.visible then
+            local is_first_run = true
+
+            mousegrabber.run(function(mouse)
+                local status = handle_click_outside(mouse, is_first_run)
+
+                if status then
+                    is_first_run = false
+                    return true
+                end
+
+                return false
+            end
+            , 'arrow')
+        else
             mousegrabber.stop()
         end
     end)
