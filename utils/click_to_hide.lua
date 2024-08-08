@@ -19,17 +19,16 @@ end
 
 local function add_click_outside(widget)
     local function handle_click_outside(mouse, is_first_run)
+        if is_first_run then
+            return true
+        end
+
         local is_inside_widget = get_click_inside_widget(widget)
         if is_inside_widget then
             return false
         end
 
-        if is_first_run then
-            return true
-        end
-
         local any_button_pressed = is_any_button_pressed(mouse)
-
         if any_button_pressed then
             widget.visible = false
             return false
