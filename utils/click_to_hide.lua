@@ -16,28 +16,32 @@ local function get_click_inside_widget(widget)
     return not is_outside
 end
 
-local function add_click_outside(widget)
-    local function handle_click_outside(mouse, is_first_run)
-        if is_first_run then
-            return true
-        end
-
-        local is_inside_widget = get_click_inside_widget(widget)
-        if is_inside_widget then
-            return false
-        end
-
-        local is_button_pressed = is_any_button_pressed(mouse)
-        if is_button_pressed then
-            widget.visible = false
-            return false
-        end
-
+local function handle_click_outside(mouse, widget, is_first_run)
+    if is_first_run then
         return true
     end
 
+    local is_inside_widget = get_click_inside_widget(widget)
+    if is_inside_widget then
+        return false
+    end
+
+    local is_button_pressed = is_any_button_pressed(mouse)
+    if is_button_pressed then
+        widget.visible = false
+        return false
+    end
+
+    return true
+end
+
+
+local function add_click_outside(widget)
     widget:connect_signal('mouse::leave', function()
-        mousegrabber.run(handle_click_outside, 'arrow')
+        mousegrabber.run(function(mouse)
+            return handle_click_outside(mouse, widget)
+        end
+        , 'arrow')
     end)
 
     widget:connect_signal('property::visible', function()
@@ -45,7 +49,7 @@ local function add_click_outside(widget)
             local is_first_run = true
 
             mousegrabber.run(function(mouse)
-                local status = handle_click_outside(mouse, is_first_run)
+                local status = handle_click_outside(mouse, widget, is_first_run)
 
                 if status then
                     is_first_run = false
