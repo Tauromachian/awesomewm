@@ -10,11 +10,10 @@ local function get_click_inside_widget(widget)
     local mouse_coords = mouse.coords()
     local popup_geo = widget:geometry()
 
-    if mouse_coords.x < popup_geo.x or mouse_coords.x > popup_geo.width + popup_geo.x or mouse_coords.y < popup_geo.y or mouse_coords.y > popup_geo.height + popup_geo.y then
-        return false
-    end
+    local is_outside = mouse_coords.x < popup_geo.x or mouse_coords.x > popup_geo.width + popup_geo.x or
+        mouse_coords.y < popup_geo.y or mouse_coords.y > popup_geo.height + popup_geo.y
 
-    return true
+    return not is_outside
 end
 
 local function add_click_outside(widget)
