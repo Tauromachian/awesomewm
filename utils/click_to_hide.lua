@@ -45,14 +45,12 @@ local function add_click_outside(widget)
             local is_first_run = true
 
             mousegrabber.run(function(mouse)
-                local status = handle_click_outside(mouse, widget, is_first_run)
-
-                if status then
+                if is_first_run then
                     is_first_run = false
                     return true
                 end
 
-                return false
+                return handle_click_outside(mouse, widget)
             end
             , 'arrow')
         else
