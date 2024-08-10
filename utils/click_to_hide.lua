@@ -16,11 +16,7 @@ local function get_click_inside_widget(widget)
     return not is_outside
 end
 
-local function handle_click_outside(mouse, widget, is_first_run)
-    if is_first_run then
-        return true
-    end
-
+local function handle_click_outside(mouse, widget)
     local is_inside_widget = get_click_inside_widget(widget)
     if is_inside_widget then
         return false
