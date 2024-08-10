@@ -1,4 +1,4 @@
-local function is_any_button_pressed(mouse)
+local function get_any_button_pressed(mouse)
     for _, button_state in ipairs(mouse.buttons) do
         if button_state then
             return true
@@ -22,7 +22,7 @@ local function handle_click_outside(mouse, widget)
         return false
     end
 
-    local is_button_pressed = is_any_button_pressed(mouse)
+    local is_button_pressed = get_any_button_pressed(mouse)
     if is_button_pressed then
         widget.visible = false
         return false
